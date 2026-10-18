@@ -6,12 +6,8 @@ import { motion } from "framer-motion";
 // INFORMACIÓN EDITABLE - WEDLY PLUS
 // ==========================================
 
-const imagenFinal = "/finalboda.webp";
+const imagenFinal = "/final.png";
 
-const iniciales = {
-  primera: "A",
-  segunda: "D",
-};
 
 // ==========================================
 // COMPONENTE PRINCIPAL
@@ -36,7 +32,7 @@ const FinalBoda = () => {
           absolute inset-0
           h-full w-full
           object-cover
-          object-center
+          object-[center_20%]
         "
       />
 
@@ -99,18 +95,7 @@ const FinalBoda = () => {
             drop-shadow-[0_4px_15px_rgba(0,0,0,0.65)]
           "
         >
-          {iniciales.primera}
-          <span
-            className="
-              mx-3 sm:mx-5
-              font-cursiveDancing
-              font-normal
-              text-[#F4E8DD]
-            "
-          >
-            &
-          </span>
-          {iniciales.segunda}
+          Darla Sanchez
         </h2>
 
         {/* ADORNO INFERIOR */}

@@ -1,10 +1,20 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import {
+  Heart,
+  Sparkles,
+  Send,
+  CheckCircle2,
+  Flower2,
+} from "lucide-react";
 
 // ==========================================
-// CONFIGURACIÓN EDITABLE - WEDLY PLUS
+// CONFIGURACIÓN EDITABLE - WEDLY XV CLÁSICO
 // ==========================================
+
+// ENLACE DE GOOGLE APPS SCRIPT
+// Conservamos el enlace original.
 
 const URL_CONFIRMACION =
   "https://script.google.com/macros/s/AKfycbxklU9PTlqxkcu9pBUfWYhByQZ_7kJWuFENeeQhlEW-C6eh2cVbTK3z2AbMJiWVL1ME/exec";
@@ -30,13 +40,19 @@ const Confirmacion = () => {
     e.preventDefault();
 
     if (!nombreInvitado.trim() || !asistencia) {
-      setError("Completa tu nombre y confirma tu asistencia.");
+      setError(
+        "Completa tu nombre y confirma tu asistencia."
+      );
       return;
     }
 
     if (
       asistencia === "Sí asistiré" &&
-      (!invitados || Number(invitados) < 1)
+      (
+        !invitados ||
+        !Number.isInteger(Number(invitados)) ||
+        Number(invitados) < 1
+      )
     ) {
       setError("Indica el número de invitados.");
       return;
@@ -61,7 +77,9 @@ const Confirmacion = () => {
       });
 
       if (!respuesta.ok) {
-        throw new Error("No se pudo completar la solicitud.");
+        throw new Error(
+          "No se pudo completar la solicitud."
+        );
       }
 
       setEnviado(true);
@@ -71,7 +89,11 @@ const Confirmacion = () => {
       setAsistencia("");
       setInvitados("");
     } catch (error) {
-      console.error("Error al enviar confirmación:", error);
+      console.error(
+        "Error al enviar confirmación:",
+        error
+      );
+
       setError(
         "Hubo un error al enviar. Intenta nuevamente."
       );
@@ -86,17 +108,17 @@ const Confirmacion = () => {
 
   const estiloCampo = `
     w-full
-    bg-[#F8F2ED]
-    border border-[#B88A8A]/45
+    bg-[#F7FAFC]
+    border border-[#A9C5D8]/65
     rounded-2xl
     px-5 py-4
-    text-[#4A141D]
-    placeholder:text-[#4A141D]/45
+    text-[#40576B]
+    placeholder:text-[#40576B]/45
     outline-none
     transition-all duration-300
-    focus:border-[#4A141D]
+    focus:border-[#C8AD85]
     focus:ring-2
-    focus:ring-[#B88A8A]/30
+    focus:ring-[#C8AD85]/25
   `;
 
   return (
@@ -105,19 +127,24 @@ const Confirmacion = () => {
         relative
         w-full
         overflow-hidden
-        bg-[#F4E8DD]
+        bg-[#40576B]
         px-5
-        py-20 sm:py-28
+        py-20
+        sm:py-28
       "
     >
-      {/* DECORACIONES DEL FONDO */}
+
+      {/* ======================================
+          DECORACIONES DE FONDO
+      ====================================== */}
+
       <div
         className="
           pointer-events-none
           absolute -left-36 top-16
           h-80 w-80
           rounded-full
-          border border-[#B88A8A]/20
+          border border-[#A9C5D8]/20
         "
       />
 
@@ -127,11 +154,54 @@ const Confirmacion = () => {
           absolute -right-36 bottom-16
           h-80 w-80
           rounded-full
-          border border-[#B88A8A]/20
+          border border-[#C8AD85]/20
         "
       />
 
-      {/* TARJETA PRINCIPAL */}
+      <div
+        className="
+          pointer-events-none
+          absolute -left-32 -top-32
+          h-96 w-96
+          rounded-full
+          bg-[#A9C5D8]/10
+          blur-3xl
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute -right-32 -bottom-32
+          h-96 w-96
+          rounded-full
+          bg-[#C8AD85]/10
+          blur-3xl
+        "
+      />
+
+      <Sparkles
+        size={25}
+        strokeWidth={1}
+        className="
+          absolute left-8 top-12
+          text-[#C8AD85]/60
+        "
+      />
+
+      <Sparkles
+        size={22}
+        strokeWidth={1}
+        className="
+          absolute bottom-12 right-8
+          text-[#C8AD85]/60
+        "
+      />
+
+      {/* ======================================
+          TARJETA PRINCIPAL
+      ====================================== */}
+
       <motion.div
         initial={{ opacity: 0, y: 55 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -143,87 +213,201 @@ const Confirmacion = () => {
         className="
           relative z-10
           mx-auto
-          w-full max-w-3xl
+          w-full
+          max-w-3xl
           overflow-hidden
           rounded-tl-[4rem]
           rounded-br-[4rem]
           rounded-tr-2xl
           rounded-bl-2xl
-          border border-[#B88A8A]/40
-          bg-[#F8F2ED]
+          border border-[#C8AD85]/45
+          bg-[#F7FAFC]
           px-6 py-12
-          sm:px-12 sm:py-16
-          shadow-[0_25px_70px_rgba(74,20,29,0.12)]
+          shadow-[0_25px_70px_rgba(0,0,0,0.22)]
+          sm:px-12
+          sm:py-16
         "
       >
-        {/* LÍNEA DECORATIVA SUPERIOR */}
+
+        {/* LÍNEA SUPERIOR */}
+
         <div
           className="
             absolute top-0 left-1/2
             h-[3px] w-28
             -translate-x-1/2
-            bg-[#B88A8A]
+            bg-[#C8AD85]
           "
         />
 
-        {/* ENCABEZADO */}
-        <div className="text-center">
+        {/* DECORACIONES DE ESQUINAS */}
+
+        <div
+          className="
+            pointer-events-none
+            absolute -top-16 -right-16
+            h-44 w-44
+            rounded-full
+            border border-[#A9C5D8]/30
+          "
+        />
+
+        <div
+          className="
+            pointer-events-none
+            absolute -top-9 -right-9
+            h-28 w-28
+            rounded-full
+            border border-[#C8AD85]/30
+          "
+        />
+
+        {/* ======================================
+            ENCABEZADO
+        ====================================== */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center"
+        >
+
+          {/* ICONO PRINCIPAL */}
+
+          <div
+            className="
+              mx-auto mb-7
+              flex h-16 w-16
+              items-center
+              justify-center
+              rounded-full
+              border border-[#C8AD85]/50
+              bg-[#DFEAF2]
+            "
+          >
+            <Heart
+              size={29}
+              strokeWidth={1.3}
+              className="text-[#40576B]"
+            />
+          </div>
+
+          {/* SUBTÍTULO */}
 
           <p
             className="
-              text-xs sm:text-sm
+              text-xs
               font-semibold
               uppercase
               tracking-[0.35em]
-              text-[#9B626B]
+              text-[#9A7E55]
+              sm:text-sm
             "
           >
-            RSVP
+            RSVP · Mis XV Años
           </p>
+
+          {/* TÍTULO */}
 
           <h2
             className="
               mt-5
-              font-playfair
-              text-4xl sm:text-5xl
+              font-cursiveDancing
+              text-5xl
               leading-tight
-              text-[#4A141D]
+              text-[#40576B]
+              sm:text-6xl
+              md:text-7xl
             "
           >
-            Confirmar asistencia
+            Confirma tu asistencia
           </h2>
 
-          <div className="mx-auto my-8 h-px w-24 bg-[#B88A8A]" />
+          {/* SEPARADOR */}
+
+          <div
+            className="
+              mx-auto my-8
+              flex items-center
+              justify-center
+              gap-4
+            "
+          >
+            <span className="h-px w-14 bg-[#C8AD85]" />
+
+            <Flower2
+              size={19}
+              strokeWidth={1.2}
+              className="text-[#C8AD85]"
+            />
+
+            <span className="h-px w-14 bg-[#C8AD85]" />
+          </div>
+
+          {/* DESCRIPCIÓN */}
 
           <p
             className="
-              mx-auto max-w-xl
+              mx-auto
+              max-w-xl
               font-playfair
-              text-base sm:text-lg
+              text-base
               leading-relaxed
-              text-[#4A141D]/75
+              text-[#40576B]/85
+              sm:text-lg
             "
           >
-            Nos llenará de alegría compartir este día
-            tan especial contigo. Por favor, confirma
-            tu asistencia.
+            Estoy muy emocionada de celebrar mis XV años
+            y me encantaría compartir este momento
+            tan especial contigo.
+            Por favor, confirma tu asistencia
+            para que podamos preparar todo con cariño.
           </p>
 
-        </div>
+          {/* FIRMA */}
 
-        {/* FORMULARIO */}
+          <p
+            className="
+              mt-6
+              font-cursiveDancing
+              text-3xl
+              text-[#C8AD85]
+              sm:text-4xl
+            "
+          >
+            Con cariño, Darla
+          </p>
+
+        </motion.div>
+
+        {/* ======================================
+            FORMULARIO
+        ====================================== */}
+
         <form
           onSubmit={enviarConfirmacion}
-          className="mx-auto mt-12 max-w-xl space-y-6"
+          className="
+            relative z-10
+            mx-auto
+            mt-12
+            max-w-xl
+            space-y-6
+          "
         >
-          {/* NOMBRE */}
+
+          {/* ======================================
+              NOMBRE DEL INVITADO
+          ====================================== */}
+
           <div>
             <label
               htmlFor="nombreInvitado"
               className="
                 mb-3 block
                 text-sm font-medium
-                text-[#4A141D]
+                text-[#40576B]
               "
             >
               Nombre y apellido
@@ -242,26 +426,41 @@ const Confirmacion = () => {
             />
           </div>
 
-          {/* ASISTENCIA */}
+          {/* ======================================
+              ASISTENCIA
+          ====================================== */}
+
           <div>
             <p
               className="
                 mb-4
                 text-sm font-medium
-                text-[#4A141D]
+                text-[#40576B]
               "
             >
-              ¿Nos acompañarás?
+              ¿Me acompañarás en mis XV años?
             </p>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div
+              className="
+                grid grid-cols-1
+                gap-4
+                sm:grid-cols-2
+              "
+            >
+
+              {/* SÍ ASISTIRÉ */}
 
               <button
                 type="button"
-                aria-pressed={asistencia === "Sí asistiré"}
-                onClick={() =>
-                  setAsistencia("Sí asistiré")
+                aria-pressed={
+                  asistencia === "Sí asistiré"
                 }
+                onClick={() => {
+                  setAsistencia("Sí asistiré");
+                  setError("");
+                  setEnviado(false);
+                }}
                 className={`
                   rounded-2xl
                   border
@@ -271,13 +470,15 @@ const Confirmacion = () => {
                   transition-all duration-300
                   ${
                     asistencia === "Sí asistiré"
-                      ? "border-[#4A141D] bg-[#4A141D] text-[#F8F2ED] shadow-lg"
-                      : "border-[#B88A8A]/45 bg-[#F4E8DD] text-[#4A141D] hover:border-[#B88A8A]"
+                      ? "border-[#40576B] bg-[#40576B] text-[#F7FAFC] shadow-lg"
+                      : "border-[#A9C5D8]/65 bg-[#DFEAF2] text-[#40576B] hover:border-[#C8AD85]"
                   }
                 `}
               >
                 Sí asistiré
               </button>
+
+              {/* NO ASISTIRÉ */}
 
               <button
                 type="button"
@@ -287,6 +488,8 @@ const Confirmacion = () => {
                 onClick={() => {
                   setAsistencia("No podré asistir");
                   setInvitados("");
+                  setError("");
+                  setEnviado(false);
                 }}
                 className={`
                   rounded-2xl
@@ -297,8 +500,8 @@ const Confirmacion = () => {
                   transition-all duration-300
                   ${
                     asistencia === "No podré asistir"
-                      ? "border-[#4A141D] bg-[#4A141D] text-[#F8F2ED] shadow-lg"
-                      : "border-[#B88A8A]/45 bg-[#F4E8DD] text-[#4A141D] hover:border-[#B88A8A]"
+                      ? "border-[#40576B] bg-[#40576B] text-[#F7FAFC] shadow-lg"
+                      : "border-[#A9C5D8]/65 bg-[#DFEAF2] text-[#40576B] hover:border-[#C8AD85]"
                   }
                 `}
               >
@@ -308,7 +511,10 @@ const Confirmacion = () => {
             </div>
           </div>
 
-          {/* NÚMERO DE INVITADOS */}
+          {/* ======================================
+              NÚMERO DE INVITADOS
+          ====================================== */}
+
           {asistencia === "Sí asistiré" && (
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -320,7 +526,7 @@ const Confirmacion = () => {
                 className="
                   mb-3 block
                   text-sm font-medium
-                  text-[#4A141D]
+                  text-[#40576B]
                 "
               >
                 Número de invitados
@@ -341,25 +547,34 @@ const Confirmacion = () => {
             </motion.div>
           )}
 
-          {/* MENSAJE */}
+          {/* ======================================
+              MENSAJE PARA DARLA
+          ====================================== */}
+
           <div>
             <label
               htmlFor="mensajeInvitado"
               className="
                 mb-3 block
                 text-sm font-medium
-                text-[#4A141D]
+                text-[#40576B]
               "
             >
-              Mensaje para los novios
-              <span className="ml-2 text-[#4A141D]/50">
+              Mensaje para Darla
+
+              <span
+                className="
+                  ml-2
+                  text-[#40576B]/50
+                "
+              >
                 (Opcional)
               </span>
             </label>
 
             <textarea
               id="mensajeInvitado"
-              placeholder="Déjanos unas palabras bonitas..."
+              placeholder="Déjame unas palabras bonitas para mis XV años..."
               value={mensajeInvitado}
               onChange={(e) =>
                 setMensajeInvitado(e.target.value)
@@ -369,41 +584,68 @@ const Confirmacion = () => {
             />
           </div>
 
-          {/* MENSAJE DE ERROR */}
+          {/* ======================================
+              MENSAJE DE ERROR
+          ====================================== */}
+
           {error && (
-            <p
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
               role="alert"
               className="
                 rounded-xl
-                border border-[#B88A8A]/50
-                bg-[#B88A8A]/20
+                border border-[#C8AD85]/50
+                bg-[#DFEAF2]
                 px-4 py-3
                 text-sm
-                text-[#4A141D]
+                text-[#40576B]
               "
             >
               {error}
-            </p>
+            </motion.p>
           )}
 
-          {/* MENSAJE DE ÉXITO */}
+          {/* ======================================
+              MENSAJE DE ÉXITO
+          ====================================== */}
+
           {enviado && (
-            <p
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               role="status"
               className="
+                flex
+                items-center
+                gap-3
                 rounded-xl
-                border border-[#B88A8A]/50
-                bg-[#F4E8DD]
-                px-4 py-3
-                text-center text-sm
-                text-[#4A141D]
+                border border-[#A9C5D8]/60
+                bg-[#DFEAF2]
+                px-4 py-4
+                text-sm
+                text-[#40576B]
               "
             >
-              ¡Tu confirmación fue enviada correctamente!
-            </p>
+              <CheckCircle2
+                size={22}
+                className="
+                  shrink-0
+                  text-[#40576B]
+                "
+              />
+
+              <span>
+                ¡Tu confirmación fue enviada correctamente!
+                Gracias por ser parte de mis XV años.
+              </span>
+            </motion.div>
           )}
 
-          {/* BOTÓN DE ENVÍO */}
+          {/* ======================================
+              BOTÓN DE ENVÍO
+          ====================================== */}
+
           <motion.button
             type="submit"
             disabled={enviando}
@@ -414,35 +656,53 @@ const Confirmacion = () => {
               enviando ? {} : { scale: 0.98 }
             }
             className="
+              flex
               w-full
+              items-center
+              justify-center
+              gap-3
               rounded-full
-              bg-[#4A141D]
+              bg-[#40576B]
               px-8 py-4
               font-playfair
               text-lg
-              text-[#F8F2ED]
-              shadow-[0_15px_35px_rgba(74,20,29,0.25)]
+              text-[#F7FAFC]
+              shadow-[0_15px_35px_rgba(64,87,107,0.25)]
               transition-colors duration-300
-              hover:bg-[#6B1F2A]
+              hover:bg-[#536F85]
               disabled:cursor-not-allowed
               disabled:opacity-60
             "
           >
-            {enviando
-              ? "Enviando..."
-              : "Enviar confirmación"}
+            {enviando ? (
+              "Enviando..."
+            ) : (
+              <>
+                <Send
+                  size={20}
+                  strokeWidth={1.6}
+                />
+
+                Enviar confirmación
+              </>
+            )}
           </motion.button>
+
         </form>
 
-        {/* LÍNEA DECORATIVA INFERIOR */}
+        {/* ======================================
+            LÍNEA DECORATIVA INFERIOR
+        ====================================== */}
+
         <div
           className="
             absolute bottom-0 left-1/2
             h-[3px] w-28
             -translate-x-1/2
-            bg-[#B88A8A]
+            bg-[#C8AD85]
           "
         />
+
       </motion.div>
     </section>
   );

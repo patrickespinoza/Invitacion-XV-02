@@ -1,34 +1,27 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Heart, Flower2 } from "lucide-react";
+import { Heart, Flower2, Sparkles } from "lucide-react";
 
 // ==========================================
-// INFORMACIÓN EDITABLE - WEDLY PLUS
+// INFORMACIÓN EDITABLE - WEDLY XV CLÁSICO
 // ==========================================
 
-// PADRES DE LA NOVIA
-const padresNovia = {
-  titulo: "Padres de la novia",
-  padre: "Alejandro Mendoza",
-  madre: "Claudia Valdés",
-};
-
-// PADRES DEL NOVIO
-const padresNovio = {
-  titulo: "Padres del novio",
-  padre: "Ricardo Navarro",
-  madre: "Mariana Salazar",
+// PADRES DE LA QUINCEAÑERA
+const padres = {
+  titulo: "Mis padres",
+  padre: "Fernando Sanchez",
+  madre: "Gabriela Morales",
 };
 
 // TEXTOS DE LA SECCIÓN
 const textos = {
-  subtitulo: "Con amor y gratitud",
-  titulo: "Nuestros padres",
+  subtitulo: "Con todo mi amor y gratitud",
+  titulo: "Mis queridos padres",
   descripcion:
-    "Con la bendición y el amor de quienes nos han acompañado en cada paso de nuestra vida, queremos compartir contigo este día tan especial.",
+    "Detrás de cada uno de mis sueños están las personas que me han acompañado con amor, paciencia y dedicación. Hoy quiero agradecerles por ser parte de cada paso de mi vida.",
   fraseFinal:
-    "El amor que hoy celebramos también nace del amor de nuestras familias.",
+    "Gracias por enseñarme a soñar, por cuidar mis pasos y por llenar mi vida de amor. Este día tan especial también es de ustedes.",
 };
 
 // ==========================================
@@ -61,18 +54,18 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
       className="
         relative
         w-full
-        max-w-[450px]
+        max-w-[520px]
         overflow-hidden
         rounded-tl-[3.5rem]
         rounded-br-[3.5rem]
         rounded-tr-[1rem]
         rounded-bl-[1rem]
-        border border-[#B88A8A]/40
-        bg-[#F8F2ED]
+        border border-[#A9C5D8]/50
+        bg-[#F7FAFC]
         px-6 py-12
-        sm:px-10 sm:py-14
+        sm:px-12 sm:py-16
         text-center
-        shadow-[0_18px_50px_rgba(74,20,29,0.09)]
+        shadow-[0_18px_50px_rgba(64,87,107,0.12)]
       "
     >
       {/* LÍNEA SUPERIOR */}
@@ -81,28 +74,38 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
           absolute top-0 left-1/2
           h-[3px] w-28
           -translate-x-1/2
-          bg-[#B88A8A]
+          bg-[#C8AD85]
         "
       />
 
-      {/* DECORACIÓN SUPERIOR */}
+      {/* DECORACIONES SUPERIORES */}
       <div
         className="
+          pointer-events-none
           absolute -top-16 -right-16
           h-44 w-44
           rounded-full
-          border border-[#B88A8A]/20
-          pointer-events-none
+          border border-[#A9C5D8]/30
         "
       />
 
       <div
         className="
+          pointer-events-none
           absolute -top-9 -right-9
           h-28 w-28
           rounded-full
-          border border-[#B88A8A]/20
+          border border-[#C8AD85]/30
+        "
+      />
+
+      <div
+        className="
           pointer-events-none
+          absolute -bottom-20 -left-20
+          h-44 w-44
+          rounded-full
+          border border-[#A9C5D8]/25
         "
       />
 
@@ -115,14 +118,14 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
             flex h-16 w-16
             items-center justify-center
             rounded-full
-            border border-[#B88A8A]/45
-            bg-[#F4E8DD]
+            border border-[#C8AD85]/50
+            bg-[#DFEAF2]
           "
         >
           <Flower2
             size={30}
             strokeWidth={1.2}
-            className="text-[#4A141D]"
+            className="text-[#40576B]"
           />
         </div>
 
@@ -130,8 +133,9 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
         <h3
           className="
             font-playfair
-            text-xl sm:text-2xl
-            text-[#4A141D]
+            text-xl
+            text-[#40576B]
+            sm:text-2xl
           "
         >
           {titulo}
@@ -139,15 +143,15 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
 
         {/* SEPARADOR */}
         <div className="my-7 flex items-center gap-3">
-          <div className="h-[1px] w-10 bg-[#B88A8A]" />
+          <div className="h-px w-12 bg-[#C8AD85]" />
 
           <Heart
-            size={13}
+            size={15}
             strokeWidth={1.4}
-            className="text-[#B88A8A]"
+            className="text-[#C8AD85]"
           />
 
-          <div className="h-[1px] w-10 bg-[#B88A8A]" />
+          <div className="h-px w-12 bg-[#C8AD85]" />
         </div>
 
         {/* NOMBRES */}
@@ -156,9 +160,10 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
           <p
             className="
               font-playfair
-              text-2xl sm:text-[1.8rem]
+              text-2xl
               leading-snug
-              text-[#4A141D]
+              text-[#40576B]
+              sm:text-[1.9rem]
             "
           >
             {padre}
@@ -167,8 +172,8 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
           <span
             className="
               font-cursiveDancing
-              text-3xl
-              text-[#B88A8A]
+              text-4xl
+              text-[#C8AD85]
             "
           >
             &
@@ -177,13 +182,29 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
           <p
             className="
               font-playfair
-              text-2xl sm:text-[1.8rem]
+              text-2xl
               leading-snug
-              text-[#4A141D]
+              text-[#40576B]
+              sm:text-[1.9rem]
             "
           >
             {madre}
           </p>
+
+        </div>
+
+        {/* DECORACIÓN FINAL DE TARJETA */}
+        <div className="mt-9 flex items-center gap-3">
+
+          <div className="h-px w-8 bg-[#C8AD85]/60" />
+
+          <Sparkles
+            size={18}
+            strokeWidth={1.2}
+            className="text-[#C8AD85]"
+          />
+
+          <div className="h-px w-8 bg-[#C8AD85]/60" />
 
         </div>
       </div>
@@ -194,7 +215,7 @@ const TarjetaPadres = ({ titulo, padre, madre }) => {
           absolute bottom-0 left-1/2
           h-[3px] w-28
           -translate-x-1/2
-          bg-[#B88A8A]
+          bg-[#C8AD85]
         "
       />
     </motion.div>
@@ -212,19 +233,24 @@ const Padres = () => {
         relative
         w-full
         overflow-hidden
-        bg-[#F4E8DD]
+        bg-[#DFEAF2]
         px-5
-        py-20 sm:py-28
+        py-20
+        sm:py-28
       "
     >
-      {/* DECORACIONES DE FONDO */}
+
+      {/* ======================================
+          DECORACIONES DE FONDO
+      ====================================== */}
+
       <div
         className="
           pointer-events-none
           absolute -left-40 top-20
           h-80 w-80
           rounded-full
-          border border-[#B88A8A]/20
+          border border-[#A9C5D8]/30
         "
       />
 
@@ -234,13 +260,36 @@ const Padres = () => {
           absolute -right-40 bottom-20
           h-80 w-80
           rounded-full
-          border border-[#B88A8A]/20
+          border border-[#C8AD85]/25
+        "
+      />
+
+      {/* DESTELLOS */}
+
+      <Sparkles
+        size={26}
+        strokeWidth={1}
+        className="
+          absolute left-8 top-12
+          text-[#C8AD85]/70
+        "
+      />
+
+      <Sparkles
+        size={22}
+        strokeWidth={1}
+        className="
+          absolute bottom-12 right-8
+          text-[#C8AD85]/70
         "
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
 
-        {/* ENCABEZADO */}
+        {/* ======================================
+            ENCABEZADO
+        ====================================== */}
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -248,26 +297,30 @@ const Padres = () => {
           transition={{ duration: 0.8 }}
           className="mb-14 text-center"
         >
+
           {/* ADORNO */}
           <div className="mb-6 flex items-center justify-center gap-3">
-            <div className="h-[1px] w-12 bg-[#B88A8A]" />
+
+            <div className="h-px w-12 bg-[#C8AD85]" />
 
             <Heart
               size={20}
               strokeWidth={1.3}
-              className="text-[#B88A8A]"
+              className="text-[#C8AD85]"
             />
 
-            <div className="h-[1px] w-12 bg-[#B88A8A]" />
+            <div className="h-px w-12 bg-[#C8AD85]" />
+
           </div>
 
           {/* SUBTÍTULO */}
           <p
             className="
-              text-xs sm:text-sm
+              text-xs
               uppercase
               tracking-[0.35em]
-              text-[#9B626B]
+              text-[#40576B]/75
+              sm:text-sm
             "
           >
             {textos.subtitulo}
@@ -278,8 +331,10 @@ const Padres = () => {
             className="
               mt-5
               font-cursiveDancing
-              text-5xl sm:text-6xl md:text-7xl
-              text-[#4A141D]
+              text-5xl
+              text-[#40576B]
+              sm:text-6xl
+              md:text-7xl
             "
           >
             {textos.titulo}
@@ -291,35 +346,38 @@ const Padres = () => {
               mx-auto mt-7
               max-w-2xl
               font-playfair
-              text-base sm:text-lg
+              text-base
               leading-relaxed
-              text-[#4A141D]/80
+              text-[#40576B]/85
+              sm:text-lg
             "
           >
             {textos.descripcion}
           </p>
+
         </motion.div>
 
-        {/* TARJETAS DE PADRES */}
+        {/* ======================================
+            TARJETA CENTRAL DE PADRES
+        ====================================== */}
+
         <motion.div
           initial="oculto"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          transition={{ staggerChildren: 0.18 }}
           className="
-            grid grid-cols-1
-            items-stretch
-            justify-items-center
-            gap-8 lg:gap-10
-            md:grid-cols-2
+            flex
+            items-center
+            justify-center
           "
         >
-          <TarjetaPadres {...padresNovia} />
-
-          <TarjetaPadres {...padresNovio} />
+          <TarjetaPadres {...padres} />
         </motion.div>
 
-        {/* FRASE FINAL */}
+        {/* ======================================
+            FRASE FINAL
+        ====================================== */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -327,24 +385,43 @@ const Padres = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-16 text-center"
         >
+
           <Flower2
             size={25}
             strokeWidth={1.2}
-            className="mx-auto mb-5 text-[#B88A8A]"
+            className="mx-auto mb-5 text-[#C8AD85]"
           />
 
           <p
             className="
-              mx-auto max-w-xl
+              mx-auto
+              max-w-xl
               font-playfair
-              text-lg sm:text-xl
-              italic leading-relaxed
-              text-[#4A141D]/85
+              text-lg
+              italic
+              leading-relaxed
+              text-[#40576B]/90
+              sm:text-xl
             "
           >
             {textos.fraseFinal}
           </p>
+
+          {/* FIRMA */}
+          <p
+            className="
+              mt-7
+              font-cursiveDancing
+              text-3xl
+              text-[#40576B]
+              sm:text-4xl
+            "
+          >
+            Con amor, Darla
+          </p>
+
         </motion.div>
+
       </div>
     </section>
   );
